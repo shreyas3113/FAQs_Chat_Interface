@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Interface</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="app-container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <button id="newChatButton" class="new-chat-button">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    New Chat
+                </button>
+            </div>
+            
+            <div class="chat-history" id="historySection">
+                <div class="chat-history-header">Recent Chats</div>
+                <div id="chatHistoryList" class="chat-history-list">
+                    <!-- Chat history items will be added here -->
+                </div>
+            </div>
+
+            <div class="auth-buttons">
+        <button class="auth-btn login-btn">Login</button>
+        <button class="auth-btn signup-btn">Signup</button>
+        <button class="auth-btn settings-btn">Settings</button>
+    </div>
+        </div>
+
+        <div class="main-chat">
+            <div class="chat-header">
+               <!-- <button id="sidebarToggle" class="sidebar-toggle">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>--><h3>Prudence AI - The Collective mind</h3>
+              <!--  <h1 id="chatTitle">Chat Interface</h1>-->
+                
+                <div class="header-controls">
+                    <button id="themeToggle" class="theme-toggle" title="Toggle Theme">
+                            🌙
+                    </button>
+
+                    
+                    <button id="botsToggle" class="bots-toggle">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        My AI Models
+                    </button>
+                    <button id="compareToggle" class="compare-toggle">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        Compare Mode
+                    </button>
+
+                    
+                </div>
+            </div>
+
+            <div class="bots-panel" id="botsPanel">
+                <div class="bots-header">
+                    <h3>Selected AI Models</h3>
+                    <button class="close-bots">×</button>
+                </div>
+                <div class="bots-grid" id="botsGrid">
+    <!-- Will be dynamically filled by JS -->
+</div>
+
+            </div>
+
+            <div class="compare-container" id="compareContainer">
+                <div class="compare-responses" id="compareResponses">
+                    <!-- Compare responses will be added here -->
+                </div>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+                <div class="welcome-message">
+                    <div class="welcome-content">
+                        <h2>Welcome to AI Chat Interface</h2>
+                        <p>Start a conversation with your AI assistant. Select different models or use compare mode to see responses from multiple AIs.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input-container">
+                <div class="input-wrapper">
+                    <input type="text" id="messageInput" placeholder="Type your message here..." autocomplete="off">
+                    <button id="sendButton" class="send-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="bot-carousel-container">
+    <div class="carousel-header">
+        <h3>Quick Select AI Models (select upto 3)</h3>
+    </div>
+    <div class="carousel-wrapper">
+        <button class="carousel-btn" id="carouselPrev">‹</button>
+        <div class="carousel-track" id="carouselTrack">
+            <!-- Bot cards will be inserted by JavaScript -->
+        </div>
+        <button class="carousel-btn" id="carouselNext">›</button>
+    </div>
+</div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

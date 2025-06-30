@@ -1,0 +1,252 @@
+[
+  {
+    "question": "What is Python?",
+    "answer": "Python is a high-level, interpreted programming language known for its readability.",
+    "language": "Python"
+  },
+  {
+    "question": "Who developed Python?",
+    "answer": "Python was created by Guido van Rossum and released in 1991.",
+    "language": "Python"
+  },
+  {
+    "question": "What are the key features of Python?",
+    "answer": "Python is easy to read, dynamically typed, interpreted, and supports object-oriented programming.",
+    "language": "Python"
+  },
+  {
+    "question": "How do you declare a variable in Python?",
+    "answer": "Just assign a value, like this: x = 5",
+    "language": "Python"
+  },
+  {
+    "question": "What are the basic data types in Python?",
+    "answer": "int, float, str, bool, list, tuple, set, dict",
+    "language": "Python"
+  },
+  {
+    "question": "What is a list in Python?",
+    "answer": "A list is an ordered, mutable collection of items. Defined using square brackets [].",
+    "language": "Python"
+  },
+  {
+    "question": "What is a tuple in Python?",
+    "answer": "A tuple is an ordered, immutable collection. Defined using parentheses ().",
+    "language": "Python"
+  },
+  {
+    "question": "What is a dictionary in Python?",
+    "answer": "A dictionary is an unordered collection of key-value pairs. Defined using curly braces {}.",
+    "language": "Python"
+  },
+  {
+    "question": "What is a set in Python?",
+    "answer": "A set is an unordered collection of unique items. Defined using curly braces {}.",
+    "language": "Python"
+  },
+  {
+    "question": "How do you write comments in Python?",
+    "answer": "Use the # symbol for single-line comments and triple quotes for multi-line comments.",
+    "language": "Python"
+  },
+  {
+    "question": "What is indentation in Python?",
+    "answer": "Indentation defines blocks of code. Python uses whitespace instead of braces.",
+    "language": "Python"
+  },
+  {
+    "question": "What is the use of 'if' statement?",
+    "answer": "The 'if' statement is used to execute code based on conditions.",
+    "language": "Python"
+  },
+  {
+    "question": "What is the difference between '==' and 'is'?",
+    "answer": "'==' compares values, 'is' checks identity (whether they are the same object).",
+    "language": "Python"
+  },
+  {
+    "question": "What is a function in Python?",
+    "answer": "A function is a block of reusable code defined using the 'def' keyword.",
+    "language": "Python"
+  },
+  {
+    "question": "How do you define a function?",
+    "answer": "Use 'def' keyword: def my_function():",
+    "language": "Python"
+  },
+  {
+    "question": "What is a return statement?",
+    "answer": "The 'return' statement sends a value back from a function.",
+    "language": "Python"
+  },
+  {
+    "question": "What is a loop in Python?",
+    "answer": "A loop allows you to repeat a block of code. Use 'for' or 'while'.",
+    "language": "Python"
+  },
+  {
+    "question": "How does a 'for' loop work?",
+    "answer": "It iterates over items in a sequence (like list, string, etc.).",
+    "language": "Python"
+  },
+  {
+    "question": "What is a while loop?",
+    "answer": "Executes a block of code as long as the condition is true.",
+    "language": "Python"
+  },
+  {
+    "question": "What is the difference between break and continue?",
+    "answer": "'break' exits a loop; 'continue' skips to the next iteration.",
+    "language": "Python"
+  },
+  {
+    "question": "How do you take user input?",
+    "answer": "Use the input() function.",
+    "language": "Python"
+  },
+  {
+    "question": "How do you convert a string to an integer?",
+    "answer": "Use int(): int('5') → 5",
+    "language": "Python"
+  },
+  {
+    "question": "What is type casting?",
+    "answer": "Converting one data type to another, like int(), str(), float().",
+    "language": "Python"
+  },
+  {
+    "question": "What is None in Python?",
+    "answer": "'None' is a special constant representing the absence of a value.",
+    "language": "Python"
+  },
+  {
+    "question": "What is the length of a list?",
+    "answer": "Use len(): len([1, 2, 3]) → 3",
+    "language": "Python"
+  },
+  {
+    "question": "How to access list items?",
+    "answer": "Using index: mylist[0]",
+    "language": "Python"
+  },
+  {
+    "question": "What is slicing in Python?",
+    "answer": "Extracting parts of a list or string using [start:stop].",
+    "language": "Python"
+  },
+  {
+    "question": "What is a module in Python?",
+    "answer": "A module is a file containing Python code that can be imported.",
+    "language": "Python"
+  },
+  {
+    "question": "What is a package?",
+    "answer": "A package is a collection of modules organized in folders with __init__.py.",
+    "language": "Python"
+  },
+  {
+    "question": "How to import a module?",
+    "answer": "Use import statement: import math",
+    "language": "Python"
+  },
+  {
+    "question": "What is the math module?",
+    "answer": "It provides mathematical functions like sqrt(), sin(), cos(), etc.",
+    "language": "Python"
+  },
+  {
+    "question": "What is exception handling?",
+    "answer": "Handling runtime errors using try-except blocks.",
+    "language": "Python"
+  },
+  {
+    "question": "What is a try-except block?",
+    "answer": "It lets you catch and handle exceptions (errors) without crashing the program.",
+    "language": "Python"
+  },
+  {
+    "question": "How to open a file in Python?",
+    "answer": "Use open(): open('file.txt', 'r')",
+    "language": "Python"
+  },
+  {
+    "question": "How to write to a file?",
+    "answer": "Use open('file.txt', 'w') and write().",
+    "language": "Python"
+  },
+  {
+    "question": "What is the difference between 'r', 'w', 'a' modes?",
+    "answer": "'r' = read, 'w' = write (overwrite), 'a' = append.",
+    "language": "Python"
+  },
+  {
+    "question": "What is a class in Python?",
+    "answer": "A class is a blueprint for creating objects.",
+    "language": "Python"
+  },
+  {
+    "question": "What is an object in Python?",
+    "answer": "An object is an instance of a class with attributes and methods.",
+    "language": "Python"
+  },
+  {
+    "question": "What is self in Python?",
+    "answer": "'self' represents the instance of the class inside its methods.",
+    "language": "Python"
+  },
+  {
+    "question": "What is __init__ in Python?",
+    "answer": "__init__ is a constructor method that runs when an object is created.",
+    "language": "Python"
+  },
+  {
+    "question": "What is inheritance?",
+    "answer": "Inheritance lets one class derive properties and methods from another.",
+    "language": "Python"
+  },
+  {
+    "question": "What is polymorphism?",
+    "answer": "Polymorphism allows functions or methods to behave differently based on input.",
+    "language": "Python"
+  },
+  {
+    "question": "What is encapsulation?",
+    "answer": "Encapsulation means hiding internal details and showing only necessary parts.",
+    "language": "Python"
+  },
+  {
+    "question": "What is abstraction?",
+    "answer": "Abstraction hides complex implementation and shows only essentials.",
+    "language": "Python"
+  },
+  {
+    "question": "What is a lambda function?",
+    "answer": "A small anonymous function defined with the lambda keyword.",
+    "language": "Python"
+  },
+  {
+    "question": "What is map() in Python?",
+    "answer": "map() applies a function to each item in a list.",
+    "language": "Python"
+  },
+  {
+    "question": "What is filter() in Python?",
+    "answer": "filter() selects items from a list based on a condition.",
+    "language": "Python"
+  },
+  {
+    "question": "What is a generator?",
+    "answer": "A generator yields items one at a time using 'yield' instead of 'return'.",
+    "language": "Python"
+  },
+  {
+    "question": "What is a decorator in Python?",
+    "answer": "A decorator is a function that modifies another function’s behavior.",
+    "language": "Python"
+  },
+  {
+    "question": "How to install external libraries?",
+    "answer": "Use pip: pip install library_name",
+    "language": "Python"
+  }
+]
