@@ -26,27 +26,27 @@
   },
   {
     "question": "What is a list in Python?",
-    "answer": "A list is an ordered, mutable collection of items. Defined using square brackets [].",
+    "answer": "A list is an ordered, mutable collection of items. Defined using square brackets [].\n\nExample:\n```python\nmy_list = [1, 2, 3]\nprint(my_list[0])\n```",
     "language": "Python"
   },
   {
     "question": "What is a tuple in Python?",
-    "answer": "A tuple is an ordered, immutable collection. Defined using parentheses ().",
+    "answer": "A tuple is an ordered, immutable collection. Defined using parentheses ().\n\nExample:\n```python\nmy_tuple = (1, 2, 3)\nprint(my_tuple[0])\n```",
     "language": "Python"
   },
   {
     "question": "What is a dictionary in Python?",
-    "answer": "A dictionary is an unordered collection of key-value pairs. Defined using curly braces {}.",
+    "answer": "A dictionary is an unordered collection of key-value pairs. Defined using curly braces {}.\n\nExample:\n```python\nd = {\"name\": \"Alice\", \"age\": 30}\nprint(d[\"name\"])\n```",
     "language": "Python"
   },
   {
     "question": "What is a set in Python?",
-    "answer": "A set is an unordered collection of unique items. Defined using curly braces {}.",
+    "answer": "A set is an unordered collection of unique items. Defined using curly braces {}.\n\nExample:\n```python\nmy_set = {1, 2, 3}\nprint(my_set)\n```",
     "language": "Python"
   },
   {
     "question": "How do you write comments in Python?",
-    "answer": "Use the # symbol for single-line comments and triple quotes for multi-line comments.",
+    "answer": "Use the # symbol for single-line comments and triple quotes for multi-line comments.\n\nExample:\n```python\n# This is a single-line comment\n'''This is a\nmulti-line comment'''\n```",
     "language": "Python"
   },
   {
@@ -96,22 +96,22 @@
   },
   {
     "question": "What is the difference between break and continue?",
-    "answer": "'break' exits a loop; 'continue' skips to the next iteration.",
+    "answer": "'break' exits a loop; 'continue' skips to the next iteration.\n\nExample:\n```python\nfor i in range(5):\nif i == 2:\ncontinue\nprint(i)\n```",
     "language": "Python"
   },
   {
     "question": "How do you take user input?",
-    "answer": "Use the input() function.",
+    "answer": "Use the input() function.\n\nExample:\n```python\nname = input(\"Enter your name: \")\nprint(\"Hello\", name)\n```",
     "language": "Python"
   },
   {
     "question": "How do you convert a string to an integer?",
-    "answer": "Use int(): int('5') → 5",
+    "answer": "Use int(): int('5') \u2192 5\n\nExample:\n```python\nnum = int(\"5\")\nprint(num + 1)\n```",
     "language": "Python"
   },
   {
     "question": "What is type casting?",
-    "answer": "Converting one data type to another, like int(), str(), float().",
+    "answer": "Converting one data type to another, like int(), str(), float().\n\nExample:\n```python\nx = 5\nprint(float(x))\n```",
     "language": "Python"
   },
   {
@@ -121,17 +121,17 @@
   },
   {
     "question": "What is the length of a list?",
-    "answer": "Use len(): len([1, 2, 3]) → 3",
+    "answer": "Use len(): len([1, 2, 3]) \u2192 3",
     "language": "Python"
   },
   {
     "question": "How to access list items?",
-    "answer": "Using index: mylist[0]",
+    "answer": "Using index: mylist[0]\n\nExample:\n```python\nmy_list = [10, 20, 30]\nprint(my_list[1])\n```",
     "language": "Python"
   },
   {
     "question": "What is slicing in Python?",
-    "answer": "Extracting parts of a list or string using [start:stop].",
+    "answer": "Extracting parts of a list or string using [start:stop].\n\nExample:\n```python\nmy_list = [1, 2, 3, 4, 5]\nprint(my_list[1:4])\n```",
     "language": "Python"
   },
   {
@@ -241,12 +241,62 @@
   },
   {
     "question": "What is a decorator in Python?",
-    "answer": "A decorator is a function that modifies another function’s behavior.",
+    "answer": "A decorator is a function that modifies another function\u2019s behavior.",
     "language": "Python"
   },
   {
     "question": "How to install external libraries?",
     "answer": "Use pip: pip install library_name",
+    "language": "Python"
+  },
+  {
+    "question": "How do you define a function in Python?",
+    "answer": "You use the 'def' keyword to define a function.\n\nExample:\n```python\ndef greet():\nprint(\"Hello\")\n```",
+    "language": "Python"
+  },
+  {
+    "question": "How do you write a for loop in Python?",
+    "answer": "Use the 'for' keyword to iterate over a sequence.\n\nExample:\n```python\nfor i in range(5):\nprint(i)\n```",
+    "language": "Python"
+  },
+  {
+    "question": "How do you open and read a file in Python?",
+    "answer": "Use the built-in open() function.\n\nExample:\n```python\nwith open(\"file.txt\", \"r\") as file:\nprint(file.read())\n```",
+    "language": "Python"
+  },
+  {
+    "question": "What is a list in Python?",
+    "answer": "A list is an ordered, mutable collection.\n\nExample:\n```python\nmy_list = [1, 2, 3]\nprint(my_list[0])\n```",
+    "language": "Python"
+  },
+  {
+    "question": "What is a dictionary in Python?",
+    "answer": "A dictionary stores key-value pairs.\n\nExample:\n```python\nd = {\"name\": \"Alice\", \"age\": 30}\nprint(d[\"name\"])\n```",
+    "language": "Python"
+  },
+  {
+    "question": "How do you create a class in Python?",
+    "answer": "Use the 'class' keyword.\n\nExample:\n```python\nclass Person:\n    def __init__(self, name):\n        self.name = name\n\n    def greet(self):\n        print(\"Hello, \" + self.name)\n```",
+    "language": "Python"
+  },
+  {
+    "question": "What is a lambda function in Python?",
+    "answer": "A lambda function is a small anonymous function.\n\nExample:\n```python\nsquare = lambda x: x * x\nprint(square(4))\n```",
+    "language": "Python"
+  },
+  {
+    "question": "How do you handle exceptions in Python?",
+    "answer": "Use try-except blocks.\n\nExample:\n```python\ntry:\n1/0\nexcept ZeroDivisionError:\nprint(\"Error\")\n```",
+    "language": "Python"
+  },
+  {
+    "question": "What is list comprehension in Python?",
+    "answer": "It's a concise way to create lists.\n\nExample:\n```python\nsquares = [x*x for x in range(5)]\nprint(squares)\n```",
+    "language": "Python"
+  },
+  {
+    "question": "How do you import a module in Python?",
+    "answer": "Use the 'import' keyword.\n\nExample:\n```python\nimport math\nprint(math.sqrt(16))\n```",
     "language": "Python"
   }
 ]
