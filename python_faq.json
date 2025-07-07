@@ -150,6 +150,131 @@
     "language": "Python"
   },
   {
+    "question": "What is a list in Python?",
+    "answer": "A list is an ordered, mutable collection of items. Defined using square brackets [].\n\nExample:\n```python\nmy_list = [1, 2, 3]\nprint(my_list[0])\n```",
+    "language": "Python"
+  },
+  {
+    "question": "What is a tuple in Python?",
+    "answer": "A tuple is an ordered, immutable collection. Defined using parentheses ().\n\nExample:\n```python\nmy_tuple = (1, 2, 3)\nprint(my_tuple[0])\n```",
+    "language": "Python"
+  },
+  {
+    "question": "What is a dictionary in Python?",
+    "answer": "A dictionary is an unordered collection of key-value pairs. Defined using curly braces {}.\n\nExample:\n```python\nd = {\"name\": \"Alice\", \"age\": 30}\nprint(d[\"name\"])\n```",
+    "language": "Python"
+  },
+  {
+    "question": "What is a set in Python?",
+    "answer": "A set is an unordered collection of unique items. Defined using curly braces {}.\n\nExample:\n```python\nmy_set = {1, 2, 3}\nprint(my_set)\n```",
+    "language": "Python"
+  },
+  {
+    "question": "How do you write comments in Python?",
+    "answer": "Use the # symbol for single-line comments and triple quotes for multi-line comments.\n\nExample:\n```python\n# This is a single-line comment\n'''This is a\nmulti-line comment'''\n```",
+    "language": "Python"
+  },
+  {
+    "question": "What is indentation in Python?",
+    "answer": "Indentation defines blocks of code. Python uses whitespace instead of braces.\n\nExample:\n```python\nif True:\n    print(\"Indented block\")\n```",
+    "language": "Python"
+  },
+  {
+    "question": "What is the use of 'if' statement?",
+    "answer": "The 'if' statement is used to execute code based on conditions.\n\nExample:\n```python\nx = 10\nif x > 5:\n    print(\"x is greater than 5\")\n```",
+    "language": "Python"
+  },
+  {
+    "question": "What is the difference between '==' and 'is'?",
+    "answer": "'==' compares values, 'is' checks identity (whether they are the same object).\n\nExample:\n```python\na = [1, 2]\nb = [1, 2]\nprint(a == b)  # True\nprint(a is b)  # False\n```",
+    "language": "Python"
+  },
+  {
+    "question": "What is a function in Python?",
+    "answer": "A function is a block of reusable code defined using the 'def' keyword.\n\nExample:\n```python\ndef add(a, b):\n    return a + b\nprint(add(2, 3))\n```",
+    "language": "Python"
+  },
+  {
+    "question": "How do you define a function?",
+    "answer": "Use 'def' keyword:\n\nExample:\n```python\ndef my_function():\n    print(\"Hello\")\nmy_function()\n```",
+    "language": "Python"
+  },
+  {
+    "question": "What is a return statement?",
+    "answer": "The 'return' statement sends a value back from a function.\n\nExample:\n```python\ndef square(num):\n    return num * num\nprint(square(4))\n```",
+    "language": "Python"
+  },
+  {
+    "question": "What is a loop in Python?",
+    "answer": "A loop allows you to repeat a block of code. Use 'for' or 'while'.\n\nExample:\n```python\nfor i in range(3):\n    print(i)\n```",
+    "language": "Python"
+  },
+  {
+    "question": "How does a 'for' loop work?",
+    "answer": "It iterates over items in a sequence (like list, string, etc.).\n\nExample:\n```python\nfor item in [1, 2, 3]:\n    print(item)\n```",
+    "language": "Python"
+  },
+  {
+    "question": "What is a while loop?",
+    "answer": "Executes a block of code as long as the condition is true.\n\nExample:\n```python\ncount = 0\nwhile count < 3:\n    print(count)\n    count += 1\n```",
+    "language": "Python"
+  },
+  {
+    "question": "What is the difference between break and continue?",
+    "answer": "'break' exits a loop; 'continue' skips to the next iteration.\n\nExample:\n```python\nfor i in range(5):\n    if i == 2:\n        continue\n    print(i)\n```",
+    "language": "Python"
+  },
+  {
+    "question": "How do you take user input?",
+    "answer": "Use the input() function.\n\nExample:\n```python\nname = input(\"Enter your name: \")\nprint(\"Hello\", name)\n```",
+    "language": "Python"
+  },
+  {
+    "question": "How do you convert a string to an integer?",
+    "answer": "Use int():\n\nExample:\n```python\nnum = int(\"5\")\nprint(num + 1)\n```",
+    "language": "Python"
+  },
+  {
+    "question": "What is type casting?",
+    "answer": "Converting one data type to another, like int(), str(), float().\n\nExample:\n```python\nx = 5\nprint(float(x))\n```",
+    "language": "Python"
+  },
+  {
+    "question": "What is None in Python?",
+    "answer": "'None' is a special constant representing the absence of a value.\n\nExample:\n```python\nx = None\nif x is None:\n    print(\"No value assigned\")\n```",
+    "language": "Python"
+  },
+  {
+    "question": "What is the length of a list?",
+    "answer": "Use len():\n\nExample:\n```python\nmy_list = [1, 2, 3]\nprint(len(my_list))\n```",
+    "language": "Python"
+  },
+  {
+    "question": "How to access list items?",
+    "answer": "Using index:\n\nExample:\n```python\nmy_list = [10, 20, 30]\nprint(my_list[1])\n```",
+    "language": "Python"
+  },
+  {
+    "question": "What is slicing in Python?",
+    "answer": "Extracting parts of a list or string using [start:stop].\n\nExample:\n```python\nmy_list = [1, 2, 3, 4, 5]\nprint(my_list[1:4])\n```",
+    "language": "Python"
+  },
+  {
+    "question": "What is a module in Python?",
+    "answer": "A module is a file containing Python code that can be imported.\n\nExample:\n```python\nimport random\nprint(random.randint(1, 10))\n```",
+    "language": "Python"
+  },
+  {
+    "question": "What is a package?",
+    "answer": "A package is a collection of modules organized in folders with __init__.py.\n\nExample:\n```python\nfrom mypackage import mymodule\nmymodule.my_function()\n```",
+    "language": "Python"
+  },
+  {
+    "question": "How to import a module?",
+    "answer": "Use import statement:\n\nExample:\n```python\nimport math\nprint(math.pi)\n```",
+    "language": "Python"
+  },
+  {
     "question": "What is the math module?",
     "answer": "It provides mathematical functions like sqrt(), sin(), cos(), etc.\n\nExample:\n```python\nimport math\nprint(math.sqrt(16))\n```",
     "language": "Python"
@@ -297,6 +422,11 @@
   {
     "question": "How do you import a module in Python?",
     "answer": "Use the 'import' keyword.\n\nExample:\n```python\nimport math\nprint(math.sqrt(16))\n```",
+    "language": "Python"
+  },
+  {
+    "question": "How to calculate the square of a number in Python?",
+    "answer": "Use a function to compute the square and handle user input.\n\nExample:\n```python\ndef square(num):\n    return num * num\ntry:\n    number = int(input(\"Enter a number: \"))\n    result = square(number)\n    print(f\"The square of {number} is {result}\")\nexcept ValueError:\n    print(\"Please enter a valid number\")\n```",
     "language": "Python"
   }
 ]
