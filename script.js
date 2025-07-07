@@ -1,4 +1,3 @@
-
 class ChatInterface {
     constructor() {
         this.chatMessages = document.getElementById('chatMessages');
@@ -97,6 +96,14 @@ fetch('python_faq.json')  // Put this file in the same folder as index.html or i
     }
 
     return result ? result.answer : null;
+}
+
+
+formatAnswer(text) {
+  return text
+    .replace(/```python([\s\S]*?)```/g, '<pre><code class="language-python">$1</code></pre>')
+    .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
+    .replace(/\n/g, '<br>');
 }
 
     initializeEventListeners() {
@@ -305,6 +312,12 @@ fetch('python_faq.json')  // Put this file in the same folder as index.html or i
         const message = this.messageInput.value.trim();
         if (!message) return;
 
+        // Fallback: ensure at least one bot is selected
+        if (!this.selectedBots || this.selectedBots.length === 0) {
+            this.selectedBots = ['gpt-4'];
+            this.updateBotSelection();
+        }
+
         // Clear welcome message if it exists
         const welcomeMessage = this.chatMessages.querySelector('.welcome-message');
         if (welcomeMessage) {
@@ -397,8 +410,10 @@ fetch('python_faq.json')  // Put this file in the same folder as index.html or i
             const botIcon = botId ? this.aiModels[botId].icon : '🤖';
             messageDiv.innerHTML = `
                 <div class="message-content">
-                    <strong>${botIcon} ${botName}:</strong> ${this.escapeHtml(content)}
-                </div>
+  <strong>${botIcon} ${botName}:</strong>
+  <div>${this.formatAnswer(content)}</div>
+</div>
+
                 <div class="message-time">${currentTime}</div>
             `;
         }
@@ -665,6 +680,9 @@ if (faqAnswer) return faqAnswer;
         }, 100);
     }
 }
+
+
+
 
 // Initialize the chat interface when the page loads
 document.addEventListener('DOMContentLoaded', () => {
