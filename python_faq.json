@@ -16,12 +16,12 @@
   },
   {
     "question": "How do you declare a variable in Python?",
-    "answer": "Just assign a value, like this: x = 5",
+    "answer": "Just assign a value, like this:\n\nExample:\n```python\nx = 5\nprint(x)\n```",
     "language": "Python"
   },
   {
     "question": "What are the basic data types in Python?",
-    "answer": "int, float, str, bool, list, tuple, set, dict",
+    "answer": "int, float, str, bool, list, tuple, set, dict\n\nExample:\n```python\ninteger = 5\nfloating = 3.14\nstring = \"Hello\"\nboolean = True\n```",
     "language": "Python"
   },
   {
@@ -51,52 +51,52 @@
   },
   {
     "question": "What is indentation in Python?",
-    "answer": "Indentation defines blocks of code. Python uses whitespace instead of braces.",
+    "answer": "Indentation defines blocks of code. Python uses whitespace instead of braces.\n\nExample:\n```python\nif True:\n    print(\"Indented block\")\n```",
     "language": "Python"
   },
   {
     "question": "What is the use of 'if' statement?",
-    "answer": "The 'if' statement is used to execute code based on conditions.",
+    "answer": "The 'if' statement is used to execute code based on conditions.\n\nExample:\n```python\nx = 10\nif x > 5:\n    print(\"x is greater than 5\")\n```",
     "language": "Python"
   },
   {
     "question": "What is the difference between '==' and 'is'?",
-    "answer": "'==' compares values, 'is' checks identity (whether they are the same object).",
+    "answer": "'==' compares values, 'is' checks identity (whether they are the same object).\n\nExample:\n```python\na = [1, 2]\nb = [1, 2]\nprint(a == b)  # True\nprint(a is b)  # False\n```",
     "language": "Python"
   },
   {
     "question": "What is a function in Python?",
-    "answer": "A function is a block of reusable code defined using the 'def' keyword.",
+    "answer": "A function is a block of reusable code defined using the 'def' keyword.\n\nExample:\n```python\ndef add(a, b):\n    return a + b\nprint(add(2, 3))\n```",
     "language": "Python"
   },
   {
     "question": "How do you define a function?",
-    "answer": "Use 'def' keyword: def my_function():",
+    "answer": "Use 'def' keyword:\n\nExample:\n```python\ndef my_function():\n    print(\"Hello\")\nmy_function()\n```",
     "language": "Python"
   },
   {
     "question": "What is a return statement?",
-    "answer": "The 'return' statement sends a value back from a function.",
+    "answer": "The 'return' statement sends a value back from a function.\n\nExample:\n```python\ndef square(num):\n    return num * num\nprint(square(4))\n```",
     "language": "Python"
   },
   {
     "question": "What is a loop in Python?",
-    "answer": "A loop allows you to repeat a block of code. Use 'for' or 'while'.",
+    "answer": "A loop allows you to repeat a block of code. Use 'for' or 'while'.\n\nExample:\n```python\nfor i in range(3):\n    print(i)\n```",
     "language": "Python"
   },
   {
     "question": "How does a 'for' loop work?",
-    "answer": "It iterates over items in a sequence (like list, string, etc.).",
+    "answer": "It iterates over items in a sequence (like list, string, etc.).\n\nExample:\n```python\nfor item in [1, 2, 3]:\n    print(item)\n```",
     "language": "Python"
   },
   {
     "question": "What is a while loop?",
-    "answer": "Executes a block of code as long as the condition is true.",
+    "answer": "Executes a block of code as long as the condition is true.\n\nExample:\n```python\ncount = 0\nwhile count < 3:\n    print(count)\n    count += 1\n```",
     "language": "Python"
   },
   {
     "question": "What is the difference between break and continue?",
-    "answer": "'break' exits a loop; 'continue' skips to the next iteration.\n\nExample:\n```python\nfor i in range(5):\nif i == 2:\ncontinue\nprint(i)\n```",
+    "answer": "'break' exits a loop; 'continue' skips to the next iteration.\n\nExample:\n```python\nfor i in range(5):\n    if i == 2:\n        continue\n    print(i)\n```",
     "language": "Python"
   },
   {
@@ -106,7 +106,7 @@
   },
   {
     "question": "How do you convert a string to an integer?",
-    "answer": "Use int(): int('5') \u2192 5\n\nExample:\n```python\nnum = int(\"5\")\nprint(num + 1)\n```",
+    "answer": "Use int():\n\nExample:\n```python\nnum = int(\"5\")\nprint(num + 1)\n```",
     "language": "Python"
   },
   {
@@ -116,17 +116,17 @@
   },
   {
     "question": "What is None in Python?",
-    "answer": "'None' is a special constant representing the absence of a value.",
+    "answer": "'None' is a special constant representing the absence of a value.\n\nExample:\n```python\nx = None\nif x is None:\n    print(\"No value assigned\")\n```",
     "language": "Python"
   },
   {
     "question": "What is the length of a list?",
-    "answer": "Use len(): len([1, 2, 3]) \u2192 3",
+    "answer": "Use len():\n\nExample:\n```python\nmy_list = [1, 2, 3]\nprint(len(my_list))\n```",
     "language": "Python"
   },
   {
     "question": "How to access list items?",
-    "answer": "Using index: mylist[0]\n\nExample:\n```python\nmy_list = [10, 20, 30]\nprint(my_list[1])\n```",
+    "answer": "Using index:\n\nExample:\n```python\nmy_list = [10, 20, 30]\nprint(my_list[1])\n```",
     "language": "Python"
   },
   {
@@ -136,132 +136,132 @@
   },
   {
     "question": "What is a module in Python?",
-    "answer": "A module is a file containing Python code that can be imported.",
+    "answer": "A module is a file containing Python code that can be imported.\n\nExample:\n```python\nimport random\nprint(random.randint(1, 10))\n```",
     "language": "Python"
   },
   {
     "question": "What is a package?",
-    "answer": "A package is a collection of modules organized in folders with __init__.py.",
+    "answer": "A package is a collection of modules organized in folders with __init__.py.\n\nExample:\n```python\nfrom mypackage import mymodule\nmymodule.my_function()\n```",
     "language": "Python"
   },
   {
     "question": "How to import a module?",
-    "answer": "Use import statement: import math",
+    "answer": "Use import statement:\n\nExample:\n```python\nimport math\nprint(math.pi)\n```",
     "language": "Python"
   },
   {
     "question": "What is the math module?",
-    "answer": "It provides mathematical functions like sqrt(), sin(), cos(), etc.",
+    "answer": "It provides mathematical functions like sqrt(), sin(), cos(), etc.\n\nExample:\n```python\nimport math\nprint(math.sqrt(16))\n```",
     "language": "Python"
   },
   {
     "question": "What is exception handling?",
-    "answer": "Handling runtime errors using try-except blocks.",
+    "answer": "Handling runtime errors using try-except blocks.\n\nExample:\n```python\ntry:\n    print(1 / 0)\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero\")\n```",
     "language": "Python"
   },
   {
     "question": "What is a try-except block?",
-    "answer": "It lets you catch and handle exceptions (errors) without crashing the program.",
+    "answer": "It lets you catch and handle exceptions (errors) without crashing the program.\n\nExample:\n```python\ntry:\n    x = int(\"abc\")\nexcept ValueError:\n    print(\"Invalid number\")\n```",
     "language": "Python"
   },
   {
     "question": "How to open a file in Python?",
-    "answer": "Use open(): open('file.txt', 'r')",
+    "answer": "Use open():\n\nExample:\n```python\nwith open('file.txt', 'r') as file:\n    content = file.read()\n```",
     "language": "Python"
   },
   {
     "question": "How to write to a file?",
-    "answer": "Use open('file.txt', 'w') and write().",
+    "answer": "Use open('file.txt', 'w') and write().\n\nExample:\n```python\nwith open('file.txt', 'w') as file:\n    file.write(\"Hello, world!\")\n```",
     "language": "Python"
   },
   {
     "question": "What is the difference between 'r', 'w', 'a' modes?",
-    "answer": "'r' = read, 'w' = write (overwrite), 'a' = append.",
+    "answer": "'r' = read, 'w' = write (overwrite), 'a' = append.\n\nExample:\n```python\nwith open('file.txt', 'a') as file:\n    file.write(\"New line\\n\")\n```",
     "language": "Python"
   },
   {
     "question": "What is a class in Python?",
-    "answer": "A class is a blueprint for creating objects.",
+    "answer": "A class is a blueprint for creating objects.\n\nExample:\n```python\nclass Dog:\n    def bark(self):\n        print(\"Woof!\")\n```",
     "language": "Python"
   },
   {
     "question": "What is an object in Python?",
-    "answer": "An object is an instance of a class with attributes and methods.",
+    "answer": "An object is an instance of a class with attributes and methods.\n\nExample:\n```python\nclass Dog:\n    def bark(self):\n        print(\"Woof!\")\ndog = Dog()\ndog.bark()\n```",
     "language": "Python"
   },
   {
     "question": "What is self in Python?",
-    "answer": "'self' represents the instance of the class inside its methods.",
+    "answer": "'self' represents the instance of the class inside its methods.\n\nExample:\n```python\nclass Person:\n    def __init__(self, name):\n        self.name = name\n    def greet(self):\n        print(f\"Hi, I'm {self.name}\")\n```",
     "language": "Python"
   },
   {
     "question": "What is __init__ in Python?",
-    "answer": "__init__ is a constructor method that runs when an object is created.",
+    "answer": "__init__ is a constructor method that runs when an object is created.\n\nExample:\n```python\nclass Car:\n    def __init__(self, brand):\n        self.brand = brand\ncar = Car(\"Toyota\")\n```",
     "language": "Python"
   },
   {
     "question": "What is inheritance?",
-    "answer": "Inheritance lets one class derive properties and methods from another.",
+    "answer": "Inheritance lets one class derive properties and methods from another.\n\nExample:\n```python\nclass Animal:\n    def move(self):\n        print(\"Moving\")\nclass Dog(Animal):\n    pass\ndog = Dog()\ndog.move()\n```",
     "language": "Python"
   },
   {
     "question": "What is polymorphism?",
-    "answer": "Polymorphism allows functions or methods to behave differently based on input.",
+    "answer": "Polymorphism allows functions or methods to behave differently based on input.\n\nExample:\n```python\nclass Cat:\n    def sound(self):\n        return \"Meow\"\nclass Dog:\n    def sound(self):\n        return \"Woof\"\nfor animal in [Cat(), Dog()]:\n    print(animal.sound())\n```",
     "language": "Python"
   },
   {
     "question": "What is encapsulation?",
-    "answer": "Encapsulation means hiding internal details and showing only necessary parts.",
+    "answer": "Encapsulation means hiding internal details and showing only necessary parts.\n\nExample:\n```python\nclass BankAccount:\n    def __init__(self):\n        self.__balance = 0\n    def deposit(self, amount):\n        self.__balance += amount\n```",
     "language": "Python"
   },
   {
     "question": "What is abstraction?",
-    "answer": "Abstraction hides complex implementation and shows only essentials.",
+    "answer": "Abstraction hides complex implementation and shows only essentials.\n\nExample:\n```python\nfrom abc import ABC, abstractmethod\nclass Shape(ABC):\n    @abstractmethod\n    def area(self):\n        pass\n```",
     "language": "Python"
   },
   {
     "question": "What is a lambda function?",
-    "answer": "A small anonymous function defined with the lambda keyword.",
+    "answer": "A small anonymous function defined with the lambda keyword.\n\nExample:\n```python\nsquare = lambda x: x * x\nprint(square(4))\n```",
     "language": "Python"
   },
   {
     "question": "What is map() in Python?",
-    "answer": "map() applies a function to each item in a list.",
+    "answer": "map() applies a function to each item in a list.\n\nExample:\n```python\nnumbers = [1, 2, 3]\nsquares = list(map(lambda x: x * x, numbers))\nprint(squares)\n```",
     "language": "Python"
   },
   {
     "question": "What is filter() in Python?",
-    "answer": "filter() selects items from a list based on a condition.",
+    "answer": "filter() selects items from a list based on a condition.\n\nExample:\n```python\nnumbers = [1, 2, 3, 4]\nevens = list(filter(lambda x: x % 2 == 0, numbers))\nprint(evens)\n```",
     "language": "Python"
   },
   {
     "question": "What is a generator?",
-    "answer": "A generator yields items one at a time using 'yield' instead of 'return'.",
+    "answer": "A generator yields items one at a time using 'yield' instead of 'return'.\n\nExample:\n```python\ndef my_gen():\n    yield 1\n    yield 2\nfor x in my_gen():\n    print(x)\n```",
     "language": "Python"
   },
   {
     "question": "What is a decorator in Python?",
-    "answer": "A decorator is a function that modifies another function\u2019s behavior.",
+    "answer": "A decorator is a function that modifies another function’s behavior.\n\nExample:\n```python\ndef my_decorator(func):\n    def wrapper():\n        print(\"Before\")\n        func()\n    return wrapper\n@my_decorator\ndef say_hello():\n    print(\"Hello\")\nsay_hello()\n```",
     "language": "Python"
   },
   {
     "question": "How to install external libraries?",
-    "answer": "Use pip: pip install library_name",
+    "answer": "Use pip:\n\nExample:\n```python\n# Run in terminal: pip install requests\nimport requests\nresponse = requests.get('https://api.example.com')\n```",
     "language": "Python"
   },
   {
     "question": "How do you define a function in Python?",
-    "answer": "You use the 'def' keyword to define a function.\n\nExample:\n```python\ndef greet():\nprint(\"Hello\")\n```",
+    "answer": "You use the 'def' keyword to define a function.\n\nExample:\n```python\ndef greet():\n    print(\"Hello\")\ngreet()\n```",
     "language": "Python"
   },
   {
     "question": "How do you write a for loop in Python?",
-    "answer": "Use the 'for' keyword to iterate over a sequence.\n\nExample:\n```python\nfor i in range(5):\nprint(i)\n```",
+    "answer": "Use the 'for' keyword to iterate over a sequence.\n\nExample:\n```python\nfor i in range(5):\n    print(i)\n```",
     "language": "Python"
   },
   {
     "question": "How do you open and read a file in Python?",
-    "answer": "Use the built-in open() function.\n\nExample:\n```python\nwith open(\"file.txt\", \"r\") as file:\nprint(file.read())\n```",
+    "answer": "Use the built-in open() function.\n\nExample:\n```python\nwith open(\"file.txt\", \"r\") as file:\n    print(file.read())\n```",
     "language": "Python"
   },
   {
@@ -276,7 +276,7 @@
   },
   {
     "question": "How do you create a class in Python?",
-    "answer": "Use the 'class' keyword.\n\nExample:\n```python\nclass Person:\n    def __init__(self, name):\n        self.name = name\n\n    def greet(self):\n        print(\"Hello, \" + self.name)\n```",
+    "answer": "Use the 'class' keyword.\n\nExample:\n```python\nclass Person:\n    def __init__(self, name):\n        self.name = name\n    def greet(self):\n        print(\"Hello, \" + self.name)\np = Person(\"Alice\")\np.greet()\n```",
     "language": "Python"
   },
   {
@@ -286,7 +286,7 @@
   },
   {
     "question": "How do you handle exceptions in Python?",
-    "answer": "Use try-except blocks.\n\nExample:\n```python\ntry:\n1/0\nexcept ZeroDivisionError:\nprint(\"Error\")\n```",
+    "answer": "Use try-except blocks.\n\nExample:\n```python\ntry:\n    1/0\nexcept ZeroDivisionError:\n    print(\"Error\")\n```",
     "language": "Python"
   },
   {
