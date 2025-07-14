@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,28 +25,21 @@
                 </div>
             </div>
 
-            <div class="auth-buttons">
-        <button class="auth-btn login-btn">Login</button>
-        <button class="auth-btn signup-btn">Signup</button>
-        <button class="auth-btn settings-btn">Settings</button>
-    </div>
+            <div class="auth-buttons" id="authButtons">
+                <button class="auth-btn login-btn">Login</button>
+                <button class="auth-btn signup-btn">Signup</button>
+                <button class="auth-btn logout-btn" style="display: none;">Logout</button>
+                <button class="auth-btn settings-btn">Settings</button>
+            </div>
         </div>
 
         <div class="main-chat">
             <div class="chat-header">
-               <!-- <button id="sidebarToggle" class="sidebar-toggle">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                        <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>--><h3>Prudence AI - The Collective mind</h3>
-              <!--  <h1 id="chatTitle">Chat Interface</h1>-->
-                
+                <h3>Prudence AI - The Collective mind</h3>
                 <div class="header-controls">
                     <button id="themeToggle" class="theme-toggle" title="Toggle Theme">
-                            🌙
+                        🌙
                     </button>
-
-                    
                     <button id="botsToggle" class="bots-toggle">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                             <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -63,8 +55,6 @@
                         </svg>
                         Compare Mode
                     </button>
-
-                    
                 </div>
             </div>
 
@@ -74,9 +64,8 @@
                     <button class="close-bots">×</button>
                 </div>
                 <div class="bots-grid" id="botsGrid">
-    <!-- Will be dynamically filled by JS -->
-</div>
-
+                    <!-- Will be dynamically filled by JS -->
+                </div>
             </div>
 
             <div class="compare-container" id="compareContainer">
@@ -105,24 +94,34 @@
                 </div>
             </div>
 
-            
-
             <div class="bot-carousel-container">
-    <div class="carousel-header">
-        <h3>Quick Select AI Models (select upto 3)</h3>
-    </div>
-    <div class="carousel-wrapper">
-        <button class="carousel-btn" id="carouselPrev">‹</button>
-        <div class="carousel-track" id="carouselTrack">
-            <!-- Bot cards will be inserted by JavaScript -->
+                <div class="carousel-header">
+                    <h3>Quick Select AI Models (select upto 3)</h3>
+                </div>
+                <div class="carousel-wrapper">
+                    <button class="carousel-btn" id="carouselPrev">‹</button>
+                    <div class="carousel-track" id="carouselTrack">
+                        <!-- Bot cards will be inserted by JavaScript -->
+                    </div>
+                    <button class="carousel-btn" id="carouselNext">›</button>
+                </div>
+            </div>
         </div>
-        <button class="carousel-btn" id="carouselNext">›</button>
     </div>
-</div>
 
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 10px; width: 90%; max-width: 300px; color: black;">
+            <h2 id="modalTitle">Login</h2>
+            <input type="text" id="modalEmail" placeholder="Email" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px;">
+            <input type="password" id="modalPassword" placeholder="Password" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px;">
+            <button id="modalSubmit" style="width: 100%; padding: 10px; background: #667eea; color: white; border: none; border-radius: 5px; cursor: pointer;">Login</button>
+            <button id="modalClose" style="width: 100%; padding: 10px; margin-top: 10px; background: #ccc; color: black; border: none; border-radius: 5px; cursor: pointer;">Close</button>
+            <div id="toggleModalAuth" style="margin-top: 10px; color: #667eea; cursor: pointer;">Need an account? Sign Up</div>
         </div>
     </div>
 
-    <script src="fixed-script.js"></script>
+    <!-- Firebase SDK -->
+    <script type="module" src="script.js"></script>
 </body>
 </html>
