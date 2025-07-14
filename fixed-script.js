@@ -1,3 +1,8 @@
+// script.js
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js";
+
 class ChatInterface {
     constructor() {
         this.chatMessages = document.getElementById('chatMessages');
@@ -17,70 +22,137 @@ class ChatInterface {
         this.carouselTrack = document.getElementById('carouselTrack');
         this.carouselPrev = document.getElementById('carouselPrev');
         this.carouselNext = document.getElementById('carouselNext');
-        
+        this.authButtons = document.getElementById('authButtons');
+        this.authModal = document.getElementById('authModal');
+        this.modalTitle = document.getElementById('modalTitle');
+        this.modalEmail = document.getElementById('modalEmail');
+        this.modalPassword = document.getElementById('modalPassword');
+        this.modalSubmit = document.getElementById('modalSubmit');
+        this.modalClose = document.getElementById('modalClose');
+        this.toggleModalAuth = document.getElementById('toggleModalAuth');
+        this.logoutBtn = document.querySelector('.logout-btn');
+
         this.currentChatId = null;
         this.chatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
-        this.selectedBots = []; // Initialize as empty to force user selection
+        this.selectedBots = [];
         this.compareMode = false;
         this.messages = [];
 
         this.aiModels = {
-            "gpt-4": {
-                name: "GPT-4", icon: "🤖",
-                description: "Advanced reasoning and analysis",
-                responses: ["Sure, how can I help you?", "Let me look that up for you.", "That’s a great question!"]
-            },
-            "claude": {
-                name: "Claude", icon: "🧠",
-                description: "Helpful and balanced responses",
-                responses: ["I’d be happy to assist!", "How can I support you today?", "Let’s solve this together."]
-            },
-            "gemini": {
-                name: "Gemini", icon: "✨",
-                description: "Creative and innovative thinking",
-                responses: ["Here’s a creative take!", "Imagination is key. Let me think...", "Let’s explore that idea."]
-            },
-            "perplexity": {
-                name: "Perplexity", icon: "📚",
-                description: "Real-time web information",
-                responses: ["Here's what I found.", "Fetching info from the web...", "Let me provide the most recent data."]
-            },
-            "copilot": {
-                name: "Copilot", icon: "👨‍💻",
-                description: "Your coding partner",
-                responses: ["Let’s code it out!", "Try this snippet.", "Here’s a quick fix."]
-            },
-            "bard": {
-                name: "Bard", icon: "🎤",
-                description: "Google's creative assistant",
-                responses: ["Let’s get poetic.", "Here’s a story you might enjoy.", "Creating something special…"]
-            },
-            "llama": {
-                name: "LLaMA", icon: "🦙",
-                description: "Meta's open model",
-                responses: ["Analyzing from my knowledge base.", "That’s interesting!", "Let’s dive in."]
-            },
-            "mistral": {
-                name: "Mistral", icon: "🐉",
-                description: "Lightweight performant AI",
-                responses: ["Fast and efficient — here’s your answer.", "No delays, just solutions.", "Responding swiftly."]
-            }
+            "gpt-4": { name: "GPT-4", icon: "🤖", description: "Advanced reasoning and analysis", responses: ["Sure, how can I help you?", "Let me look that up for you.", "That’s a great question!"] },
+            "claude": { name: "Claude", icon: "🧠", description: "Helpful and balanced responses", responses: ["I’d be happy to assist!", "How can I support you today?", "Let’s solve this together."] },
+            "gemini": { name: "Gemini", icon: "✨", description: "Creative and innovative thinking", responses: ["Here’s a creative take!", "Imagination is key. Let me think...", "Let’s explore that idea."] },
+            "perplexity": { name: "Perplexity", icon: "📚", description: "Real-time web information", responses: ["Here's what I found.", "Fetching info from the web...", "Let me provide the most recent data."] },
+            "copilot": { name: "Copilot", icon: "👨‍💻", description: "Your coding partner", responses: ["Let’s code it out!", "Try this snippet.", "Here’s a quick fix."] },
+            "bard": { name: "Bard", icon: "🎤", description: "Google's creative assistant", responses: ["Let’s get poetic.", "Here’s a story you might enjoy.", "Creating something special…"] },
+            "llama": { name: "LLaMA", icon: "🦙", description: "Meta's open model", responses: ["Analyzing from my knowledge base.", "That’s interesting!", "Let’s dive in."] },
+            "mistral": { name: "Mistral", icon: "🐉", description: "Lightweight performant AI", responses: ["Fast and efficient — here’s your answer.", "No delays, just solutions.", "Responding swiftly."] }
         };
 
         this.faqs = [];
         fetch('python_faq.json')
             .then(res => res.json())
-            .then(data => {
-                this.faqs = data;
-            });
+            .then(data => { this.faqs = data; });
+
+        // Firebase Initialization
+         const firebaseConfig = {
+    apiKey: "AIzaSyDy7fz3i5qVNDgAaAj7E4RvGpjJbglixMA",
+    authDomain: "prudenceai-4046f.firebaseapp.com",
+    databaseURL: "https://prudenceai-4046f-default-rtdb.firebaseio.com",
+    projectId: "prudenceai-4046f",
+    storageBucket: "prudenceai-4046f.firebasestorage.app",
+    messagingSenderId: "896774332544",
+    appId: "1:896774332544:web:eaf6d39a7d0a24e5cf0665"
+  };
+        this.app = initializeApp(firebaseConfig);
+        this.auth = getAuth(this.app);
+        this.database = getDatabase(this.app);
 
         this.initializeEventListeners();
         this.initializeCarousel();
         this.renderChatHistory();
         this.startNewChat();
         this.updateBotSelection();
+        this.checkAuthState();
     }
 
+    // Authentication Methods
+    checkAuthState() {
+        onAuthStateChanged(this.auth, (user) => {
+            if (user) {
+                this.authButtons.querySelector('.login-btn').style.display = 'none';
+                this.authButtons.querySelector('.signup-btn').style.display = 'none';
+                this.authButtons.querySelector('.logout-btn').style.display = 'block';
+                this.showChatArea();
+            } else {
+                this.authButtons.querySelector('.login-btn').style.display = 'block';
+                this.authButtons.querySelector('.signup-btn').style.display = 'block';
+                this.authButtons.querySelector('.logout-btn').style.display = 'none';
+                this.hideChatArea();
+            }
+        });
+    }
+
+    showAuthModal(isLogin = true) {
+        this.authModal.style.display = 'block';
+        this.modalTitle.textContent = isLogin ? 'Login' : 'Sign Up';
+        this.modalSubmit.textContent = isLogin ? 'Login' : 'Sign Up';
+    }
+
+    hideAuthModal() {
+        this.authModal.style.display = 'none';
+        this.modalEmail.value = '';
+        this.modalPassword.value = '';
+    }
+
+    loginUser(email, password) {
+        signInWithEmailAndPassword(this.auth, email, password)
+            .then((userCredential) => {
+                console.log("User signed in with UID:", userCredential.user.uid);
+                alert("Login successful!");
+                this.hideAuthModal();
+            })
+            .catch((error) => {
+                console.error("Error signing in:", error.code, error.message);
+            });
+    }
+
+    signUpUser(email, password) {
+        createUserWithEmailAndPassword(this.auth, email, password)
+            .then((userCredential) => {
+                const userId = userCredential.user.uid;
+                set(ref(this.database, 'users/' + userId), { email: email })
+                    .then(() => {
+                        console.log("User signed up and data saved with UID:", userId);
+                        alert("Signup successful!");
+                        // Auto-login after sign-up
+                        return signInWithEmailAndPassword(this.auth, email, password);
+                    })
+                    .then(() => {
+                        this.hideAuthModal();
+                    })
+                    .catch((error) => {
+                        console.error("Error saving data or signing in:", error.message);
+                    });
+            })
+            .catch((error) => {
+                console.error("Error signing up:", error.code, error.message);
+            });
+    }
+
+    logoutUser() {
+        signOut(this.auth)
+            .then(() => {
+                console.log("User signed out");
+                alert("Logout successful!");
+                this.startNewChat(); // Reset chat state
+            })
+            .catch((error) => {
+                console.error("Error signing out:", error.message);
+            });
+    }
+
+    // Existing Methods (with minor adjustments)
     getFaqAnswer(message) {
         const clean = (txt) => txt.toLowerCase().replace(/[?.!]/g, '').trim();
         const userText = clean(message);
@@ -106,9 +178,7 @@ class ChatInterface {
         }
         if (this.messageInput) {
             this.messageInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    this.sendMessage();
-                }
+                if (e.key === 'Enter') this.sendMessage();
             });
         }
         if (this.newChatButton) {
@@ -146,6 +216,25 @@ class ChatInterface {
             this.carouselNext.addEventListener('click', () => this.scrollCarousel('next'));
         }
 
+        document.querySelector('.login-btn').addEventListener('click', () => this.showAuthModal(true));
+        document.querySelector('.signup-btn').addEventListener('click', () => this.showAuthModal(false));
+        this.modalSubmit.addEventListener('click', () => {
+            const email = this.modalEmail.value.trim();
+            const password = this.modalPassword.value.trim();
+            if (!email || !password) {
+                alert("Email and password are required");
+                return;
+            }
+            if (this.modalTitle.textContent === 'Login') {
+                this.loginUser(email, password);
+            } else {
+                this.signUpUser(email, password);
+            }
+        });
+        this.modalClose.addEventListener('click', () => this.hideAuthModal());
+        this.toggleModalAuth.addEventListener('click', () => this.showAuthModal(this.modalTitle.textContent === 'Sign Up'));
+        this.logoutBtn.addEventListener('click', () => this.logoutUser());
+
         document.addEventListener('click', (e) => {
             if (this.botsPanel && this.botsToggle && 
                 !this.botsPanel.contains(e.target) && !this.botsToggle.contains(e.target)) {
@@ -156,28 +245,18 @@ class ChatInterface {
     }
 
     toggleSidebar() {
-        if (this.sidebar) {
-            this.sidebar.classList.toggle('active');
-        }
+        if (this.sidebar) this.sidebar.classList.toggle('active');
     }
 
     toggleBotsPanel() {
-        if (this.botsPanel) {
-            this.botsPanel.classList.toggle('active');
-        }
-        if (this.botsToggle) {
-            this.botsToggle.classList.toggle('active');
-        }
+        if (this.botsPanel) this.botsPanel.classList.toggle('active');
+        if (this.botsToggle) this.botsToggle.classList.toggle('active');
     }
 
     toggleCompareMode() {
         this.compareMode = !this.compareMode;
-        if (this.compareToggle) {
-            this.compareToggle.classList.toggle('active', this.compareMode);
-        }
-        if (this.compareContainer) {
-            this.compareContainer.classList.toggle('active', this.compareMode);
-        }
+        if (this.compareToggle) this.compareToggle.classList.toggle('active', this.compareMode);
+        if (this.compareContainer) this.compareContainer.classList.toggle('active', this.compareMode);
 
         if (this.compareMode && this.selectedBots.length < 2) {
             this.selectedBots = ['gpt-4', 'claude'];
@@ -187,11 +266,9 @@ class ChatInterface {
     }
 
     toggleBotSelection(botId) {
-        // Ensure single selection mode unless in compare mode
         if (!this.compareMode) {
             this.selectedBots = [botId];
         } else {
-            // In compare mode, allow up to 3 bots
             if (this.selectedBots.includes(botId)) {
                 this.selectedBots = this.selectedBots.filter(id => id !== botId);
             } else if (this.selectedBots.length < 3) {
@@ -199,11 +276,9 @@ class ChatInterface {
             }
         }
 
-        // Immediately update UI and state
         this.updateBotSelection();
         this.updateCarouselSelection();
 
-        // Close bots panel if open
         const botsPanelVisible = this.botsPanel?.classList.contains("active");
         if (botsPanelVisible) {
             this.botsPanel.classList.remove("active");
@@ -214,7 +289,6 @@ class ChatInterface {
     updateBotSelection() {
         const limitReached = this.selectedBots.length >= 3;
 
-        // Update top dropdown panel
         const botsGrid = document.getElementById('botsGrid');
         if (botsGrid) {
             botsGrid.innerHTML = '';
@@ -238,7 +312,6 @@ class ChatInterface {
             }
         }
 
-        // Update bottom carousel
         if (this.carouselTrack) {
             const cards = this.carouselTrack.querySelectorAll('.carousel-bot-card');
             cards.forEach(card => {
@@ -263,12 +336,8 @@ class ChatInterface {
             `;
         }
         
-        if (this.compareResponses) {
-            this.compareResponses.innerHTML = '';
-        }
-        if (this.messageInput) {
-            this.messageInput.focus();
-        }
+        if (this.compareResponses) this.compareResponses.innerHTML = '';
+        if (this.messageInput) this.messageInput.focus();
 
         this.updateBotSelection();
     }
@@ -277,18 +346,14 @@ class ChatInterface {
         const message = this.messageInput.value.trim();
         if (!message) return;
 
-        // Validate bot selection
         if (!this.selectedBots || this.selectedBots.length === 0) {
             this.addMessage("Please select an AI model before sending a message.", 'ai');
             this.messageInput.value = '';
             return;
         }
 
-        // Clear welcome message
         const welcomeMessage = this.chatMessages.querySelector('.welcome-message');
-        if (welcomeMessage) {
-            welcomeMessage.remove();
-        }
+        if (welcomeMessage) welcomeMessage.remove();
 
         this.addMessage(message, 'user');
         this.messageInput.value = '';
@@ -405,9 +470,7 @@ class ChatInterface {
 
     hideTypingIndicator() {
         const typingIndicator = document.getElementById('typing-indicator');
-        if (typingIndicator) {
-            typingIndicator.remove();
-        }
+        if (typingIndicator) typingIndicator.remove();
     }
 
     generateAIResponse(userMessage, botId) {
@@ -466,9 +529,7 @@ class ChatInterface {
         this.chatHistory.forEach(chat => {
             const chatItem = document.createElement('div');
             chatItem.className = 'chat-history-item';
-            if (chat.id === this.currentChatId) {
-                chatItem.classList.add('active');
-            }
+            if (chat.id === this.currentChatId) chatItem.classList.add('active');
 
             const lastMessage = chat.messages[chat.messages.length - 1];
             const preview = lastMessage ? lastMessage.content.substring(0, 50) + '...' : '';
@@ -487,10 +548,7 @@ class ChatInterface {
         this.currentChatId = chat.id;
         this.messages = chat.messages;
         this.chatMessages.innerHTML = '';
-        this.messages.forEach(message => {
-            this.addMessageToDisplay(message);
-        });
-
+        this.messages.forEach(message => this.addMessageToDisplay(message));
         this.renderChatHistory();
         this.scrollToBottom();
     }
@@ -543,10 +601,7 @@ class ChatInterface {
                 <div class="carousel-bot-desc">${model.description.split(' ').slice(0, 3).join(' ')}...</div>
             `;
 
-            botCard.addEventListener('click', () => {
-                this.toggleBotSelection(botId);
-            });
-
+            botCard.addEventListener('click', () => this.toggleBotSelection(botId));
             this.carouselTrack.appendChild(botCard);
         });
 
@@ -570,24 +625,34 @@ class ChatInterface {
         const currentScroll = this.carouselTrack.scrollLeft;
         
         if (direction === 'next') {
-            this.carouselTrack.scrollTo({
-                left: currentScroll + scrollAmount,
-                behavior: 'smooth'
-            });
+            this.carouselTrack.scrollTo({ left: currentScroll + scrollAmount, behavior: 'smooth' });
         } else {
-            this.carouselTrack.scrollTo({
-                left: currentScroll - scrollAmount,
-                behavior: 'smooth'
-            });
+            this.carouselTrack.scrollTo({ left: currentScroll - scrollAmount, behavior: 'smooth' });
         }
     }
 
     scrollToBottom() {
         setTimeout(() => {
-            if (this.chatMessages) {
-                this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
-            }
+            if (this.chatMessages) this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
         }, 100);
+    }
+
+    showChatArea() {
+        this.authButtons.querySelector('.login-btn').style.display = 'none';
+        this.authButtons.querySelector('.signup-btn').style.display = 'none';
+        this.authButtons.querySelector('.logout-btn').style.display = 'block';
+        this.chatMessages.style.display = 'block';
+        this.messageInput.style.display = 'inline';
+        this.sendButton.style.display = 'flex';
+    }
+
+    hideChatArea() {
+        this.authButtons.querySelector('.login-btn').style.display = 'block';
+        this.authButtons.querySelector('.signup-btn').style.display = 'block';
+        this.authButtons.querySelector('.logout-btn').style.display = 'none';
+        this.chatMessages.style.display = 'none';
+        this.messageInput.style.display = 'none';
+        this.sendButton.style.display = 'none';
     }
 }
 
