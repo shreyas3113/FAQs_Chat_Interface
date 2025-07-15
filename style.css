@@ -409,7 +409,7 @@ body {
 }
 
 .message {
-    max-width: 70%;
+    max-width: 80%;
     animation: fadeInUp 0.3s ease;
 }
 
@@ -423,11 +423,15 @@ body {
 
 .user-message {
     align-self: flex-end;
+    
+    
 }
 
 .user-message .message-content {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
+    width: fit-content;
+    margin-left: auto;
 }
 
 .ai-message {
