@@ -55,15 +55,15 @@ class ChatInterface {
             .then(data => { this.faqs = data; });
 
         // Firebase Initialization
-         const firebaseConfig = {
-    apiKey: "AIzaSyDy7fz3i5qVNDgAaAj7E4RvGpjJbglixMA",
-    authDomain: "prudenceai-4046f.firebaseapp.com",
-    databaseURL: "https://prudenceai-4046f-default-rtdb.firebaseio.com",
-    projectId: "prudenceai-4046f",
-    storageBucket: "prudenceai-4046f.firebasestorage.app",
-    messagingSenderId: "896774332544",
-    appId: "1:896774332544:web:eaf6d39a7d0a24e5cf0665"
-  };
+        const firebaseConfig = {
+            apiKey: "AIzaSyDy7fz3i5qVNDgAaAj7E4RvGpjJbglixMA",
+            authDomain: "prudenceai-4046f.firebaseapp.com",
+            databaseURL: "https://prudenceai-4046f-default-rtdb.firebaseio.com",
+            projectId: "prudenceai-4046f",
+            storageBucket: "prudenceai-4046f.firebasestorage.app",
+            messagingSenderId: "896774332544",
+            appId: "1:896774332544:web:eaf6d39a7d0a24e5cf0665"
+        };
         this.app = initializeApp(firebaseConfig);
         this.auth = getAuth(this.app);
         this.database = getDatabase(this.app);
@@ -97,23 +97,46 @@ class ChatInterface {
         this.authModal.style.display = 'block';
         this.modalTitle.textContent = isLogin ? 'Login' : 'Sign Up';
         this.modalSubmit.textContent = isLogin ? 'Login' : 'Sign Up';
+        // Clear any previous success message
+        const successMessage = this.authModal.querySelector('.success-message');
+        if (successMessage) successMessage.remove();
     }
 
     hideAuthModal() {
         this.authModal.style.display = 'none';
         this.modalEmail.value = '';
         this.modalPassword.value = '';
+        // Clear success message when closing
+        const successMessage = this.authModal.querySelector('.success-message');
+        if (successMessage) successMessage.remove();
     }
 
     loginUser(email, password) {
         signInWithEmailAndPassword(this.auth, email, password)
             .then((userCredential) => {
                 console.log("User signed in with UID:", userCredential.user.uid);
-                alert("Login successful!");
-                this.hideAuthModal();
+                // Add success message to the modal
+                const successDiv = document.createElement('div');
+                successDiv.className = 'success-message';
+                successDiv.style.cssText = 'color: green; text-align: center; margin-top: 10px;';
+                successDiv.textContent = 'Login successful!';
+                this.authModal.querySelector('div').appendChild(successDiv);
+                // Clear fields and hide modal after 2 seconds
+                setTimeout(() => {
+                    this.hideAuthModal();
+                }, 2000);
             })
             .catch((error) => {
                 console.error("Error signing in:", error.code, error.message);
+                // Optionally add error message to the modal
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error-message';
+                errorDiv.style.cssText = 'color: red; text-align: center; margin-top: 10px;';
+                errorDiv.textContent = `Error: ${error.message}`;
+                this.authModal.querySelector('div').appendChild(errorDiv);
+                setTimeout(() => {
+                    if (errorDiv.parentNode) errorDiv.remove();
+                }, 3000);
             });
     }
 
@@ -124,19 +147,42 @@ class ChatInterface {
                 set(ref(this.database, 'users/' + userId), { email: email })
                     .then(() => {
                         console.log("User signed up and data saved with UID:", userId);
-                        alert("Signup successful!");
-                        // Auto-login after sign-up
+                        // Add success message to the modal
+                        const successDiv = document.createElement('div');
+                        successDiv.className = 'success-message';
+                        successDiv.style.cssText = 'color: green; text-align: center; margin-top: 10px;';
+                        successDiv.textContent = 'Signup successful!';
+                        this.authModal.querySelector('div').appendChild(successDiv);
+                        // Auto-login and hide modal after 2 seconds
                         return signInWithEmailAndPassword(this.auth, email, password);
                     })
                     .then(() => {
-                        this.hideAuthModal();
+                        setTimeout(() => {
+                            this.hideAuthModal();
+                        }, 2000);
                     })
                     .catch((error) => {
                         console.error("Error saving data or signing in:", error.message);
+                        const errorDiv = document.createElement('div');
+                        errorDiv.className = 'error-message';
+                        errorDiv.style.cssText = 'color: red; text-align: center; margin-top: 10px;';
+                        errorDiv.textContent = `Error: ${error.message}`;
+                        this.authModal.querySelector('div').appendChild(errorDiv);
+                        setTimeout(() => {
+                            if (errorDiv.parentNode) errorDiv.remove();
+                        }, 3000);
                     });
             })
             .catch((error) => {
                 console.error("Error signing up:", error.code, error.message);
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error-message';
+                errorDiv.style.cssText = 'color: red; text-align: center; margin-top: 10px;';
+                errorDiv.textContent = `Error: ${error.message}`;
+                this.authModal.querySelector('div').appendChild(errorDiv);
+                setTimeout(() => {
+                    if (errorDiv.parentNode) errorDiv.remove();
+                }, 3000);
             });
     }
 
@@ -144,11 +190,26 @@ class ChatInterface {
         signOut(this.auth)
             .then(() => {
                 console.log("User signed out");
-                alert("Logout successful!");
-                this.startNewChat(); // Reset chat state
+                const successDiv = document.createElement('div');
+                successDiv.className = 'success-message';
+                successDiv.style.cssText = 'color: green; text-align: center; margin-top: 10px;';
+                successDiv.textContent = 'Logout successful!';
+                this.authModal.querySelector('div').appendChild(successDiv);
+                setTimeout(() => {
+                    if (successDiv.parentNode) successDiv.remove();
+                    this.startNewChat(); // Reset chat state
+                }, 2000);
             })
             .catch((error) => {
                 console.error("Error signing out:", error.message);
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error-message';
+                errorDiv.style.cssText = 'color: red; text-align: center; margin-top: 10px;';
+                errorDiv.textContent = `Error: ${error.message}`;
+                this.authModal.querySelector('div').appendChild(errorDiv);
+                setTimeout(() => {
+                    if (errorDiv.parentNode) errorDiv.remove();
+                }, 3000);
             });
     }
 
