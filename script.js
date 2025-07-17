@@ -5,6 +5,14 @@ import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebase
 
 class ChatInterface {
     constructor() {
+        this.compareMode = true;
+        const compareButton = document.querySelector('.ensemble-toggle');
+        const compareContainer = document.getElementById('compareContainer');
+        if (compareButton && compareContainer) {
+            compareButton.classList.add('active');
+            compareContainer.classList.add('active');
+        }
+
         this.chatMessages = document.getElementById('chatMessages');
         this.messageInput = document.getElementById('messageInput');
         this.sendButton = document.getElementById('sendButton');
