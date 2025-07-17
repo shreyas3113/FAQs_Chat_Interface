@@ -206,7 +206,7 @@ body {
 }
 
 .bots-toggle,
-.compare-toggle {
+.ensemble-toggle {
     background: rgba(102, 126, 234, 0.1);
     border: 1px solid rgba(102, 126, 234, 0.2);
     color: #667eea;
@@ -222,13 +222,13 @@ body {
 }
 
 .bots-toggle:hover,
-.compare-toggle:hover {
+.ensemble-toggle:hover {
     background: rgba(102, 126, 234, 0.2);
     transform: translateY(-1px);
 }
 
 .bots-toggle.active,
-.compare-toggle.active {
+.ensemble-toggle.active {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     border-color: transparent;
@@ -750,7 +750,7 @@ body {
     }
 
     .bots-toggle,
-    .compare-toggle {
+    .ensemble-toggle {
         padding: 0.5rem 0.75rem;
         font-size: 0.8rem;
     }
