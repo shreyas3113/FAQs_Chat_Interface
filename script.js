@@ -5,13 +5,14 @@ import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebase
 
 class ChatInterface {
     constructor() {
+        // Enable compareMode by default
         this.compareMode = true;
-        const compareButton = document.querySelector('.ensemble-toggle');
-        const compareContainer = document.getElementById('compareContainer');
-        if (compareButton && compareContainer) {
-            compareButton.classList.add('active');
-            compareContainer.classList.add('active');
-        }
+        // Default selected bots for ensemble mode
+        this.selectedBots = ['gpt-4', 'claude'];
+
+        // Always activate ensemble toggle and container
+        if (this.compareToggle) this.compareToggle.classList.add('active');
+        if (this.compareContainer) this.compareContainer.classList.add('active');
 
         this.chatMessages = document.getElementById('chatMessages');
         this.messageInput = document.getElementById('messageInput');
@@ -42,8 +43,6 @@ class ChatInterface {
 
         this.currentChatId = null;
         this.chatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
-        this.selectedBots = [];
-        this.compareMode = false;
         this.messages = [];
         this.faqs = [];
         this.personalityFaqs = []; // Added for personality development FAQs
@@ -541,6 +540,8 @@ class ChatInterface {
     }
 
     toggleBotSelection(botId) {
+        const previousBots = [...this.selectedBots];
+
         if (!this.compareMode) {
             this.selectedBots = [botId];
         } else {
@@ -549,6 +550,13 @@ class ChatInterface {
             } else if (this.selectedBots.length < 3) {
                 this.selectedBots.push(botId);
             }
+        }
+
+        // If bots changed and there are messages, save and start new chat
+        const botsChanged = previousBots.sort().join(',') !== this.selectedBots.sort().join(',');
+        if (botsChanged && this.messages.length > 0) {
+            this.saveChatHistory();
+            this.startNewChat();
         }
 
         this.updateBotSelection();
