@@ -8,7 +8,7 @@ class ChatInterface {
         // Enable compareMode by default
         this.compareMode = true;
         // Default selected bots for ensemble mode
-        this.selectedBots = ['gpt-4', 'claude'];
+        this.selectedBots = ['gpt-4', 'claude', 'gemini'];
 
         // Always activate ensemble toggle and container
         if (this.compareToggle) this.compareToggle.classList.add('active');
